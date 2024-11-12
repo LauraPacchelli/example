@@ -8,5 +8,11 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+         stage('Example Test') {
+            agent { docker 'openjdk:24-slim-bullseye' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
     }
 }
