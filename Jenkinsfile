@@ -1,13 +1,9 @@
 pipeline {
-    agent any
+    agent { docker 'maven:3.9.3-eclipse-temurin-17' }
     stages {
-        stage('Build') {
+        stage('Example Build') {
             steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                sh 'mvn clean install'
             }
         }
     }
